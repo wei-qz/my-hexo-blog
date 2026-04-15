@@ -1058,13 +1058,25 @@ structured_data:
 # Add the vendor prefixes to ensure compatibility
 css_prefix: true
 
-# Inject
-# Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    # 强制添加背景样式，覆盖主题默认样式
+    - |
+      <style>
+        body {
+          background: url('/img/preview.jpg') center / cover no-repeat fixed !important;
+        }
+        /* 让内容区域有半透明背景，保证文字可读 */
+        #content-inner,
+        .layout {
+          background-color: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(5px);
+          border-radius: 12px;
+          padding: 20px;
+        }
+      </style>
   bottom:
-    # - <script src="xxxx"></script>
+    # 这里保持原有内容，如果没有就留空
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
